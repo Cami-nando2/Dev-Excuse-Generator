@@ -1,55 +1,43 @@
 import js from '@eslint/js';
 
 export default [
+  {
+    ignores: ['**/*.test.js', '**/*.spec.js']
+  },
 
- {
+  js.configs.recommended,
 
- ignores: ['**/*.test.js', '**/*.spec.js']
+  {
+    files: ['**/*.js'],
 
- },
+    languageOptions: {
+      ecmaVersion: 2021,
 
- js.configs.recommended,
+      sourceType: 'commonjs',
 
- {
+      globals: {
+        console: 'readonly',
 
- files: ['**/*.js'],
+        module: 'readonly',
 
- languageOptions: {
+        require: 'readonly',
 
- ecmaVersion: 2021,
+        __dirname: 'readonly',
 
- sourceType: 'commonjs',
+        process: 'readonly',
 
- globals: {
+        fetch: 'readonly',
 
- console: 'readonly',
+        document: 'readonly'
+      }
+    },
 
- module: 'readonly',
+    rules: {
+      'no-unused-vars': 'warn',
 
- require: 'readonly',
+      'no-undef': 'error',
 
- __dirname: 'readonly',
-
- process: 'readonly',
-
- fetch: 'readonly',
-
- document: 'readonly'
-
- }
-
- },
-
- rules: {
-
-'no-unused-vars': 'warn',
-
-'no-undef': 'error',
-
-'no-console': 'off'
-
- }
-
- }
-
+      'no-console': 'off'
+    }
+  }
 ];

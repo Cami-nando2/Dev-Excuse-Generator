@@ -1,7 +1,3 @@
-function pickRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
 function generateExcuse(category) {
   const FRAGMENTS = {
     bug: {
@@ -68,12 +64,20 @@ function generateExcuse(category) {
   //     always produce same outputs (because of randomness), but given
   //     the FRAGMENTS data it should never return undefined or null.
 
+  // Your code here
   if (!FRAGMENTS[category]) {
     return `Unknown category: ${category}`;
   }
 
   const { subjects, verbs, reasons } = FRAGMENTS[category];
-  return `${pickRandom(subjects)} ${pickRandom(verbs)} ${pickRandom(reasons)}.`;
+  const subject = pickRandom(subjects);
+  const verb = pickRandom(verbs);
+  const reason = pickRandom(reasons);
+
+  return `${subject} ${verb} ${reason}.`;
 }
 
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 module.exports = { generateExcuse };
